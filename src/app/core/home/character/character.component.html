@@ -1,0 +1,105 @@
+<div class="container" *ngIf="!isLoaded" style="font-weight: bolder;">
+  <div class="row">
+    <div class="col" *ngIf="character">
+      <button class="btn btn-outline-dark btn-sm" (click)="goBack()">
+        Back
+      </button>
+      <br />
+      <br />
+      <h2 *ngIf="character.name">{{ character.name }}</h2>
+      <p *ngIf="character.gender">Gender: {{ character.gender }}</p>
+      <p *ngIf="character.born">Born: {{ character.born }}</p>
+      <p *ngIf="character.culture">Culture: {{ character.culture }}</p>
+      <p *ngIf="character.died">Died on: {{ character.died }}</p>
+      <p *ngIf="character.father">Father: <a [routerLink]="['/character', character.father.split('/').pop()]">{{ character.father }}</a></p>
+      <p *ngIf="character.mother">Mother: <a [routerLink]="['/character', character.mother.split('/').pop()]">{{ character.mother }}</a></p>
+      <p *ngIf="character.spouse">Spouse: <a [routerLink]="['/character', character.spouse.split('/').pop()]">{{ character.spouse }}</a></p>
+      <p *ngIf="character.playedBy != ''">
+        Played By: {{ character.playedBy }}
+      </p>
+      <p *ngIf="character.url">
+        URL: <a [routerLink]="['/character', character.url.split('/').pop()]">{{ character.url }}</a>
+      </p>
+      <p *ngIf="character.tvSeries?.length != 0 && character.tvSeries != ''">
+        Tv Series:
+        <span
+          *ngFor="
+            let season of character.tvSeries;
+            let first = first;
+            let last = last
+          "
+        >
+          {{ season }}{{ last ? "" : ", " }}
+        </span>
+      </p>
+      <p *ngIf="character.books?.length != 0 && character.books != ''">
+        Books:
+        <span
+          *ngFor="
+            let book of character.books;
+            let first = first;
+            let last = last
+          "
+        >
+          <a [routerLink]="['/book', book.split('/').pop()]">{{ book }}</a
+          >{{ last ? "" : ", " }}
+        </span>
+      </p>
+      <p *ngIf="character.povBooks?.length != 0 && character.povBooks != ''">
+        Pov Books:
+        <span
+          *ngFor="
+            let povBook of character.povBooks;
+            let first = first;
+            let last = last
+          "
+        >
+          <a [routerLink]="['/book', povBook.split('/').pop()]">{{ povBook }}</a
+          >{{ last ? "" : ", " }}
+        </span>
+      </p>
+      <p *ngIf="character.titles?.length != 0 && character.titles != ''">
+        Titles:
+        <span
+          *ngFor="
+            let title of character.titles;
+            let first = first;
+            let last = last
+          "
+        >
+          {{ title }}{{ last ? "" : ", " }}
+        </span>
+      </p>
+      <p *ngIf="character.aliases?.length != 0 && character.aliases != ''">
+        Aliases:
+        <span
+          *ngFor="
+            let alias of character.aliases;
+            let first = first;
+            let last = last
+          "
+        >
+          {{ alias }}{{ last ? "" : ", " }}
+        </span>
+      </p>
+      <p
+        *ngIf="
+          character.allegiances?.length != 0 && character.allegiances != ''
+        "
+      >
+        Allegiances:
+        <span
+          *ngFor="
+            let allegiance of character.allegiances;
+            let first = first;
+            let last = last
+          "
+        >
+          <a [routerLink]="['/house', allegiance.split('/').pop()]">{{ allegiance }}</a
+          >{{ last ? "" : ", " }}
+        </span>
+      </p>
+      <br><br>
+    </div>
+  </div>
+</div>

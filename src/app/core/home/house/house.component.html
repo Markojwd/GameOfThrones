@@ -1,0 +1,84 @@
+<div class="container" *ngIf="!isLoaded" style="font-weight: bolder;">
+  <div class="row">
+    <div class="col" *ngIf="house">
+      <button class="btn btn-outline-dark btn-sm" (click)="goBack()">
+        Back
+      </button>
+      <br />
+      <br />
+      <h2 *ngIf="house.name">{{ house.name }}</h2>
+      <p *ngIf="house.region">Region: {{ house.region }}</p>
+      <p *ngIf="house.coatOfArms">Coat Of Arms: {{ house.coatOfArms }}</p>
+      <p *ngIf="house.words">Words: {{ house.words }}</p>
+      <p *ngIf="house.url">
+        URl: <a [routerLink]="['/house', house.url.split('/').pop()]">{{ house.url }}</a>
+      </p>
+      <p *ngIf="house.titles?.length != 0 && house.titles != ''">
+        Titles:
+        <span
+          *ngFor="
+            let title of house.titles;
+            let first = first;
+            let last = last
+          "
+        >{{ title }}{{ last ? "" : ", " }}</span
+        >
+      </p>
+      <p *ngIf="house.seats?.length != 0 && house.seats != ''">
+        Seats:
+        <span
+          *ngFor="let seat of house.seats; let first = first; let last = last"
+        >{{ seat }}{{ last ? "" : ", " }}</span
+        >
+      </p>
+      <p *ngIf="house.currentLord">Current Lord: <a [routerLink]="['/character', house.currentLord.split('/').pop()]">{{ house.currentLord }}</a></p>
+      <p *ngIf="house.heir">Heir: <a [routerLink]="['/character', house.heir.split('/').pop()]">{{ house.heir }}</a></p>
+      <p *ngIf="house.overload">Overlord: <a [routerLink]="['/character', house.overload.split('/').pop()]">{{ house.overload }}</a></p>
+      <p *ngIf="house.founded">Founded: {{ house.founded }}</p>
+      <p *ngIf="house.founder">Founder: {{ house.founder }}</p>
+      <p *ngIf="house.diedOut">Died Out: {{ house.diedOut }}</p>
+      <p
+        *ngIf="
+          house.ancestralWeapons?.length != 0 && house.ancestralWeapons != ''
+        "
+      >
+        Ancestral Weapons:
+        <span
+          *ngFor="
+            let weapon of house.ancestralWeapons;
+            let first = first;
+            let last = last
+          "
+        >{{ weapon }}{{ last ? "" : ", " }}</span
+        >
+      </p>
+      <p
+        *ngIf="house.cadetBranches?.length != 0 && house.cadetBranches != ''"
+      >
+        Cadet Branches:
+        <span
+          *ngFor="
+            let cadet of house.cadetBranches;
+            let first = first;
+            let last = last
+          "
+        ><a [routerLink]="['/house', cadet.split('/').pop()]">{{ cadet }}</a
+        >{{ last ? "" : ", " }}</span
+        >
+      </p>
+      <p *ngIf="house.swornMembers?.length != 0 && house.swornMembers != ''">
+        Sworn Members:
+        <span
+          *ngFor="
+            let swornMember of house.swornMembers;
+            let first = first;
+            let last = last
+          "
+        ><a [routerLink]="['/character', swornMember.split('/').pop()]">{{ swornMember }}</a
+        >{{ last ? "" : ", " }}</span
+        >
+      </p>
+      <br><br>
+    </div>
+  </div>
+</div>
