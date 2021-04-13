@@ -13,14 +13,11 @@ export class SigninViewComponent implements OnInit {
 
   @Output() login = new EventEmitter();
 
-  public viewPort = window.innerHeight / 2;
-
   constructor(private authService: AuthService) {
     this.user = {};
   }
 
   ngOnInit(): void {
-    const asd = document.getElementById('test').style.marginTop = this.viewPort.toString() + 'px';
   }
 
   // tslint:disable-next-line:typedef
