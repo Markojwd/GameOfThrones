@@ -1,33 +1,18 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a routerLink="/" class="navbar-brand">Recipe Book</a>
-    </div>
 
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
-        <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <ng-template *ngIf="!user">
-          <li><a routerLink="/signup">Register</a></li>
-          <li><a routerLink="/signin">Login</a></li>
-        </ng-template>
-
-        <li><a
-          style="cursor: pointer;"
-          (click)="onLogout()"
-          *ngIf="user">Logout</a></li>
-
-        <li class="dropdown" appDropdown *ngIf="user">
-          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" >Save Data</a></li>
-            <li><a style="cursor: pointer;" >Fetch Data</a></li>
-          </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
       </ul>
+      <form class="d-flex">
+        <p *ngIf="user" style="margin: auto;"><i>Welcome {{user.username}}</i></p>
+        <button *ngIf="!user" class="btn"><a routerLink="/signin">Login</a></button>
+        <button *ngIf="user" class="btn"><a style="cursor: pointer;" (click)="onLogout()">Logout</a></button>
+      </form>
     </div>
   </div>
 </nav>
+

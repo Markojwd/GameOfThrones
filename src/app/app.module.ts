@@ -8,7 +8,6 @@ import {CoreModule} from './core/core.module';
 import {AuthService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth-guard.service';
 import {GotService} from './core/home/got.service';
-import {SignupComponent} from './auth/signup/signup.component';
 import {SigninViewComponent} from './auth/signin/signin-view.component';
 import {SigninComponent} from './auth/signin/signin.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -17,7 +16,6 @@ import {HeaderComponent} from './header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
     SigninComponent,
     SigninViewComponent,
     HeaderComponent

@@ -5,13 +5,11 @@
         <p *ngIf="signInError && signInError.length > 0">
           {{signInError}}
         </p>
-        <label for="username">Username</label>
+        <label for="username"><b>Username</b></label>
         <input type="username" id="username" name="username" [(ngModel)] = "user.username" ngModel class="form-control">
-<!--        <label for="email">Mail</label>-->
-<!--        <input type="email" id="email" name="email" [(ngModel)] = "user.mail" ngModel class="form-control">-->
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password"><b>Password</b></label>
         <input
           type="password"
           id="password"

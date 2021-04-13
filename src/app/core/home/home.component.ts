@@ -108,4 +108,29 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
     }
   }
+
+  changeView(event): void {
+    const selectValue = event.target.value;
+    if (!selectValue || selectValue === 'all') {
+      this.filteredData = this.allData;
+    } else if (selectValue === 'books') {
+      this.filteredData = this.allData.filter(it => {
+        if (it.hasOwnProperty('mediaType')) {
+          return it;
+        }
+      });
+    } else if (selectValue === 'characters') {
+      this.filteredData = this.allData.filter(it => {
+        if (it.hasOwnProperty('gender')) {
+          return it;
+        }
+      });
+    } else if (selectValue === 'houses'){
+      this.filteredData = this.allData.filter(it => {
+        if (it.hasOwnProperty('region')) {
+          return it;
+        }
+      });
+    }
+  }
 }

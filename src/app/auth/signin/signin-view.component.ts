@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {User} from "../../users/user";
-import {AuthService} from "../auth.service";
-import {NgForm} from "@angular/forms";
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-signin-view',
@@ -13,16 +11,20 @@ export class SigninViewComponent implements OnInit {
   @Input() user: any;
   @Input() signInError: string;
 
-  @Output('login') tryLoginEmitter = new EventEmitter();
+  @Output() login = new EventEmitter();
+
+  public viewPort = window.innerHeight / 2;
 
   constructor(private authService: AuthService) {
-    this.user = {}
+    this.user = {};
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    const asd = document.getElementById('test').style.marginTop = this.viewPort.toString() + 'px';
   }
 
+  // tslint:disable-next-line:typedef
   tryLogin(){
-    this.tryLoginEmitter.emit(this.user);
+    this.login.emit(this.user);
   }
 }
